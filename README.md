@@ -24,7 +24,9 @@ has no headless mode — it runs on your display). No root needed.
 ## Setup
 
 You bring your own local test server (Paper or Fabric, `127.0.0.1` or another address listed in
-`config.toml`'s `allowed_targets`). This repo doesn't include scripts to stand one up.
+`config.toml`'s `allowed_targets`). `tests/` has optional helper scripts (`server-start.sh`,
+`server-stop.sh`, `world-backup.sh`, `world-restore.sh`) for a disposable local Paper instance if
+you'd rather not set one up by hand; `scripts/e2e.sh` itself doesn't call them.
 
 ```bash
 git clone <this repo> && cd autism-mcp          # the client checkout must sit next to it: ../Autism-Client
