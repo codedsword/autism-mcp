@@ -13,7 +13,7 @@ Agent --MCP stdio--> mcp-server (TypeScript) --WebSocket 127.0.0.1 + token--> au
 
 ## Safety model
 
-- Default and intended target: a local Paper server you start yourself (`scripts/server-start.sh`).
+- Default and intended target: a local Paper or Fabric server you stand up yourself.
 - `allowed_targets` in `config.toml` (default `127.0.0.1`, `localhost`). Both the MCP server and
   the addon refuse to connect, chat, run commands, interact, or send packets against anything else.
 - The bridge binds `127.0.0.1` only and requires a random per-session token in a `chmod 600` file.
@@ -29,17 +29,20 @@ has no headless mode — it runs on your display). No root needed.
 
 ## Setup
 
+You bring your own local test server (Paper or Fabric, `127.0.0.1` or another address listed in
+`config.toml`'s `allowed_targets`). This repo doesn't include scripts to stand one up.
+
 ```bash
 git clone <this repo> && cd autism-mcp          # the client checkout must sit next to it: ../Autism-Client
 scripts/build-all.sh                            # client API -> ~/.m2, addon jar, mcp-server build
 PRISM_INSTANCE=<your-instance> scripts/install-addon.sh
 ```
 
-1. Edit `config.toml`: set `eula_accepted = true` **only after reading** https://aka.ms/MinecraftEULA.
-   Point `[bridge] dir` at `<prism instance>/minecraft/autism-mcp`.
-2. `scripts/server-start.sh` (first run downloads Paper, offline mode, fixed seed, ops a test player).
-3. `PRISM_INSTANCE=<your-instance> scripts/run-client.sh`, log in with an **offline throwaway account**,
-   enable the **MCP Bridge** module in the client's module menu.
+1. Edit `config.toml`: point `[bridge] dir` at `<prism instance>/minecraft/autism-mcp`, and set
+   `allowed_targets` to wherever your test server runs.
+2. Start your test server. Join it offline-mode with an **offline throwaway account**.
+3. `PRISM_INSTANCE=<your-instance> scripts/run-client.sh`, log in the same way, enable the
+   **MCP Bridge** module in the client's module menu.
 4. Register the MCP server with your agent, e.g. in `.mcp.json`:
 
 ```json
@@ -67,7 +70,7 @@ point in the client's macro system), S2C packet delay/drop (receive listeners ca
 
 ```bash
 cd mcp-server && npm test     # MCP layer against a mock bridge
-scripts/e2e.sh                # real client + local server; launch the client from Prism when prompted
+scripts/e2e.sh                # real client + your own test server; launch the client from Prism when prompted
 ```
 
 ## License
