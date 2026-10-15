@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.gradle/
+run/
+*.log
+testserver/
+findings/
+logs/
+graphify-out/
+.bridge/
+*.bak

@@ -1,0 +1,27 @@
+{
+  "name": "autism-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for exploit hunting with AUTISM Client (local research use)",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": { "autism-mcp-server": "dist/index.js" },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "smol-toml": "1.9.1",
+    "ws": "8.22.0",
+    "zod": "4.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/ws": "8.18.2",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}

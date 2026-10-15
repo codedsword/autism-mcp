@@ -1,0 +1,17 @@
+# Autism MCP configuration. Remote targets must be listed explicitly.
+allowed_targets = ["127.0.0.1", "localhost"]
+
+[bridge]
+# Where the addon writes `port` and `token` (token is chmod 600). Default = the Prism instance game dir, which the
+# Flatpak-sandboxed launcher can write. The addon uses <game dir>/autism-mcp by default.
+dir = "~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/autism-mcp/minecraft/autism-mcp"
+
+[limits]
+packets_per_second = 20
+packet_burst = 50
+experiment_max_packets = 5000
+experiment_max_seconds = 600
+
+[server]
+# You must accept the Minecraft EULA yourself: set this to true only after reading https://aka.ms/MinecraftEULA
+eula_accepted = false

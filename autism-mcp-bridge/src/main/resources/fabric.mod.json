@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "autism-mcp-bridge",
+  "version": "${version}",
+  "name": "AUTISM MCP Bridge",
+  "description": "Localhost-only bridge that lets the autism-mcp server observe and drive AUTISM Client for exploit-hunting research on local test servers.",
+  "authors": ["autism-mcp contributors", "Built on AUTISM Client and its contributors"],
+  "license": "GPL-3.0-only",
+  "custom": {
+    "autism:color": "255,160,60",
+    "modmenu": { "parent": { "id": "autism" } }
+  },
+  "environment": "client",
+  "entrypoints": {
+    "client": ["io.github.codedsword.autismmcp.BridgeInit"],
+    "autism": ["io.github.codedsword.autismmcp.BridgeAddon"]
+  },
+  "depends": {
+    "java": ">=25",
+    "minecraft": "${mc_compat}",
+    "fabricloader": ">=0.19.3",
+    "fabric-api": ">=${fabric_api_version}",
+    "autism": "*"
+  }
+}
