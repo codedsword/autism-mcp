@@ -4,12 +4,6 @@ MCP server + Fabric addon that let an AI agent drive and observe [AUTISM Client]
 (Minecraft 26.2) for exploit-hunting research on **local test servers**: run a controlled
 experiment, observe state and packets before and after, record a reproducible finding.
 
-```
-Agent --MCP stdio--> mcp-server (TypeScript) --WebSocket 127.0.0.1 + token--> autism-mcp-bridge (Fabric addon)
-                                                                                 |  AUTISM addon API + AddonEvents
-                                                                                 v
-                                                                      AUTISM Client  <->  local Paper server
-```
 
 ## Safety model
 
